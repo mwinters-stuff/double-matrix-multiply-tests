@@ -13,6 +13,10 @@ Testing performance of a matrix multipliers on android native vs java.
     test_double_java   1m 40s 660ms
     test_double_native    16s 181ms
     test_float_native     13s 892ms
+## Custom Android Device
+    test_double_java   1m 45s 328ms
+    test_double_native    25s 118ms
+    test_float_native     18s 986ms
 
 test_float_native tests the native OpenGL.Matrix.MatrixMM method.
 test_double_native tests a version of the float native method that has been changed to use doubles.

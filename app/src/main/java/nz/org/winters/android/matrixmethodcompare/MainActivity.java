@@ -68,11 +68,11 @@ public class MainActivity extends AppCompatActivity {
   }
 
   @UiThread
-  void setText(TextView textView, long value){
+  void setText(TextView textView, long value, int ic){
     Calendar c = GregorianCalendar.getInstance();
     c.setTimeInMillis(value);
 
-    textView.setText(String.format(Locale.getDefault(), "%d m %02d s %03d ms",c.get(Calendar.MINUTE),c.get(Calendar.SECOND), c.get(Calendar.MILLISECOND)));
+    textView.setText(String.format(Locale.getDefault(), "%d m %02d s %03d ms %d iterations",c.get(Calendar.MINUTE),c.get(Calendar.SECOND), c.get(Calendar.MILLISECOND), ic));
   }
 
   @Background
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     float a[] = { 2,2,2,2, 2,2,2,2, 2,2,2,2, 2,2,2,2 };
     float b[] = { 5,5,5,5, 5,5,5,5, 5,5,5,5, 5,5,5,5 };
     float r[] = { 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 };
-
+    int ic = 0;
     long start = SystemClock.elapsedRealtime();
 
     for(int i = 0; i < iterations; i++){
@@ -88,10 +88,11 @@ public class MainActivity extends AppCompatActivity {
       for(int y =0; y < r.length; y++){
         b[y] = r[y];
       }
+      ic++;
     }
 
     long duration = SystemClock.elapsedRealtime() - start;
-    setText(textViewNativeFloat, duration);
+    setText(textViewNativeFloat, duration,ic);
     Log.d("TEST","test_float took " + duration);
 
   }
@@ -101,17 +102,18 @@ public class MainActivity extends AppCompatActivity {
     double a[] = { 2,2,2,2, 2,2,2,2, 2,2,2,2, 2,2,2,2 };
     double b[] = { 5,5,5,5, 5,5,5,5, 5,5,5,5, 5,5,5,5 };
     float r[] = { 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 };
-
+    int ic = 0;
     long start = SystemClock.elapsedRealtime();
     for(int i = 0; i < iterations; i++){
       DoubleMatrix.multiplyMM(r,0,a,0,b,0);
       for(int y =0; y < r.length; y++){
         b[y] = r[y];
       }
+      ic++;
     }
 
     long duration = SystemClock.elapsedRealtime() - start;
-    setText(textViewJavaDouble, duration);
+    setText(textViewJavaDouble, duration, ic);
     Log.d("TEST","test_double_java took " + duration );
   }
 
@@ -120,17 +122,18 @@ public class MainActivity extends AppCompatActivity {
     double a[] = { 2,2,2,2, 2,2,2,2, 2,2,2,2, 2,2,2,2 };
     double b[] = { 5,5,5,5, 5,5,5,5, 5,5,5,5, 5,5,5,5 };
     float r[] = { 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 };
-
+    int ic = 0;
     long start = SystemClock.elapsedRealtime();
     for(int i = 0; i < iterations; i++){
       DoubleMatrix.multiplyMMNative(r,0,a,0,b,0);
       for(int y =0; y < r.length; y++){
         b[y] = r[y];
       }
+      ic++;
     }
 
     long duration = SystemClock.elapsedRealtime() - start;
-    setText(textViewNativeDouble, duration);
+    setText(textViewNativeDouble, duration, ic);
     Log.d("TEST","test_double_native took " + duration);
   }
   /**
