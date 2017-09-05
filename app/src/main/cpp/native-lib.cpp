@@ -125,6 +125,29 @@ void multiplyMM(float* r, const double* lhs, const double* rhs)
   }
 }
 
+static
+void multiplyMMDDouble(double* r, const double* lhs, const double* rhs)
+{
+    for (int i=0 ; i<4 ; i++) {
+        const double rhs_i0 = rhs[ I(i,0) ];
+        double ri0 = lhs[ I(0,0) ] * rhs_i0;
+        double ri1 = lhs[ I(0,1) ] * rhs_i0;
+        double ri2 = lhs[ I(0,2) ] * rhs_i0;
+        double ri3 = lhs[ I(0,3) ] * rhs_i0;
+        for (int j=1 ; j<4 ; j++) {
+            const double rhs_ij = rhs[ I(i,j) ];
+            ri0 += lhs[ I(j,0) ] * rhs_ij;
+            ri1 += lhs[ I(j,1) ] * rhs_ij;
+            ri2 += lhs[ I(j,2) ] * rhs_ij;
+            ri3 += lhs[ I(j,3) ] * rhs_ij;
+        }
+        r[ I(i,0) ] = ri0;
+        r[ I(i,1) ] = ri1;
+        r[ I(i,2) ] = ri2;
+        r[ I(i,3) ] = ri3;
+    }
+}
+
 extern "C"
 JNIEXPORT void JNICALL
 Java_nz_org_winters_android_matrixmethodcompare_DoubleMatrix_multiplyMMNative
@@ -152,4 +175,30 @@ Java_nz_org_winters_android_matrixmethodcompare_DoubleMatrix_multiplyMMNative
   rhs.bind();
   multiplyMM(resultMat.mData, lhs.mData, rhs.mData);
   resultMat.commitChanges();
+}
+
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_nz_org_winters_android_matrixmethodcompare_DoubleMatrix_multiplyMMNativeDouble(JNIEnv *env,
+                                                                                    jclass type,
+                                                                                    jdoubleArray result_ref,
+                                                                                    jint resultOffset,
+                                                                                    jdoubleArray lhs_ref,
+                                                                                    jint lhsOffset,
+                                                                                    jdoubleArray rhs_ref,
+                                                                                    jint rhsOffset) {
+    DoubleArrayHelper resultMat(env, result_ref, resultOffset, 16);
+    DoubleArrayHelper lhs(env, lhs_ref, lhsOffset, 16);
+    DoubleArrayHelper rhs(env, rhs_ref, rhsOffset, 16);
+
+    bool checkOK = resultMat.check() && lhs.check() && rhs.check();
+    if ( !checkOK ) {
+        return;
+    }
+    resultMat.bind();
+    lhs.bind();
+    rhs.bind();
+    multiplyMMDDouble(resultMat.mData, lhs.mData, rhs.mData);
+    resultMat.commitChanges();
 }

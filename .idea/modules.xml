@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MatrixMethodCompare.iml" filepath="$PROJECT_DIR$/MatrixMethodCompare.iml" />
+      <module fileurl="file://C:\Programming\double-matrix-multiply-tests\MatrixMethodCompare.iml" filepath="C:\Programming\double-matrix-multiply-tests\MatrixMethodCompare.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/double-matrix-multiply-tests.iml" filepath="$PROJECT_DIR$/double-matrix-multiply-tests.iml" />
     </modules>
   </component>
 </project>

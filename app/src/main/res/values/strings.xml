@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MatrixMethodCompare</string>
+    <string name="running">Running</string>
 </resources>

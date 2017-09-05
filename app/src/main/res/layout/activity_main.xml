@@ -12,41 +12,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button3"
-        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonNativeDouble"
+        app:layout_constraintStart_toEndOf="@+id/buttonNativeDouble"
         tools:text="XXXXXXX"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonNativeFloat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
         android:layout_marginTop="8dp"
         android:text="Native Float"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="@+id/buttonNativeDouble"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/editText"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextIterations"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonJavaDouble"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
         android:layout_marginTop="8dp"
         android:text="Java Double"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button"/>
+        app:layout_constraintEnd_toEndOf="@+id/buttonNativeDouble"
+        app:layout_constraintStart_toStartOf="@+id/buttonNativeFloat"
+        app:layout_constraintTop_toBottomOf="@+id/buttonNativeFloat"/>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonNativeDouble"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:layout_marginTop="8dp"
         android:text="Native Double"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2"/>
+        app:layout_constraintStart_toStartOf="@+id/buttonJavaDouble"
+        app:layout_constraintTop_toBottomOf="@+id/buttonJavaDouble"/>
 
     <TextView
         android:id="@+id/textView"
@@ -54,11 +54,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Iterations"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editText"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextIterations"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTextIterations"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -74,8 +74,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonNativeFloat"
+        app:layout_constraintStart_toEndOf="@+id/buttonNativeFloat"
         tools:text="XXXXXXX"/>
 
     <TextView
@@ -83,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button2"
-        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonJavaDouble"
+        app:layout_constraintStart_toEndOf="@+id/buttonJavaDouble"
         tools:text="XXXXXXX"/>
 </android.support.constraint.ConstraintLayout>

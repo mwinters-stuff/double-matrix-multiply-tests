@@ -32,4 +32,5 @@ public class DoubleMatrix {
   }
 
   public static native void multiplyMMNative(float[] result, int resultOffset, double[] lhs, int lhsOffset, double[] rhs, int rhsOffset);
+  public static native void multiplyMMNativeDouble(double[] result, int resultOffset, double[] lhs, int lhsOffset, double[] rhs, int rhsOffset);
 }
